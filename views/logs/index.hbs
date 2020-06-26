@@ -1,0 +1,35 @@
+<h3>Tracing</h3>
+<h6>Following is a log of contacts with any personnel who is tested positive</h6>
+<br>
+<div class="row">
+    {{#each displayArray}}
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    {{!-- edit icon--}}
+                    {{{editIcon user ../user _id}}}
+                </div>
+                <div class="card-content center-align">
+                    <h5>{{chipId}}</h5>
+                    <p>{{formatDate scannedAt "MMM DD, YYYY - HH:mm:ss"}}</p>
+                    <p>to</p>
+                    <p>{{formatDate leftAt "MMM DD, YYYY - HH:mm:ss"}}</p>
+                    <br>
+                    <!--
+                    <div class="chip">
+                        <img src="{{user.image}}" alt="">
+                        <a href="/logs/user/{{user._id}}">{{user.displayName}}</a>
+                    </div>
+                    -->
+                </div>
+                <!--
+                <div class="card-action center-align">
+                    <a href="/logs/{{_id}}" class="btn grey">Read More</a>
+                </div>
+                -->
+            </div>
+        </div>
+    {{else}}
+        <p>Awesome! No contact with any personnel who are tested positive</p>
+    {{/each}}
+</div>

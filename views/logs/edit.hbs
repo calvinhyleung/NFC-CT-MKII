@@ -1,0 +1,100 @@
+<h3>Edit Log</h3>
+<div class="row">
+    <form action="/logs/{{log._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <label for="chipId">NFC ID</label>
+            <h5 id="chipId" name="chipId">{{log.chipId}}</h5>
+        </div>
+
+        <div class="row">
+            <label for="scannedAt">Scan Time</label>
+            <h5 id="scannedAt" name="scannedAt">{{formatDate log.scannedAt "MMM DD, YYYY - HH:mm:ss"}}</h5>
+        </div>
+
+        <div class="row">
+            <label for="leftAt">Leave Time</label>
+            <h5 id="leftAt" name="leftAt">{{formatDate log.leftAt "MMM DD, YYYY - HH:mm:ss"}}</h5>
+        </div>
+
+        <br>
+        <h5>How long did you stay there?</h5>
+        <div class="row">
+            <table class="responsive-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-field col s4 active">
+                                <input type="text" id="hourInput" name="hourInput">
+                                <label class="active" for="hourInput">Hours</label>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="btn hour decrease">-</p>
+                            <p class="btn hour reset">0</p>
+                            <p class="btn hour increase">+</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="input-field col s4 active">
+                                <input type="text" id="minuteInput" name="minuteInput">
+                                <label class="active" for="minuteInput">Minutes</label>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="btn minute decrease">-</p>
+                            <p class="btn minute reset">0</p>
+                            <p class="btn minute increase">+</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+    <script>
+        // set inital value to zero
+        let hourCount = 0;
+        let minuteCount = 0;
+        // select value and buttons
+        const hour = document.querySelector("#first_name2");
+        const minute = document.querySelector("#minuteNum");
+        const btns = document.querySelectorAll(".btn");
+
+        btns.forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
+                const styles = e.currentTarget.classList;
+                if (styles.contains("decrease") && styles.contains("hour")) {
+                    if (hourCount > 0) {
+                        hourCount--;
+                    }
+                } else if (styles.contains("increase") && styles.contains("hour")) {
+                    if (hourCount < 23) {
+                        hourCount++;
+                    }
+                } else if (styles.contains("reset") && styles.contains("hour")) {
+                    hourCount = 0;
+                } else if (styles.contains("decrease") && styles.contains("minute")) {
+                    if (minuteCount > 0) {
+                        minuteCount -= 5;
+                    }
+                } else if (styles.contains("increase") && styles.contains("minute")) {
+                    if (minuteCount < 60) {
+                        minuteCount += 5;
+                    }
+                } else if (styles.contains("reset") && styles.contains("minute")) {
+                    minuteCount = 0;
+                }
+                hour.textContent = hourCount;
+                minute.textContent = minuteCount;
+                //M.updateTextFields(document.querySelector("#first_name2"))
+                
+            });
+        });
+    </script>
+</div>

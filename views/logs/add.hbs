@@ -1,0 +1,34 @@
+<h3>Add Log</h3>
+<div class="row">
+    <form action="/logs" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="chipId" name="chipId">
+                <label for="chipId">NFC ID</label>
+                <input type="button" value="Scan" class="btn">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    <option value="negative" selected>negative</option>
+                    <option value="positive">positive</option>
+                </select>
+                <label for="status">COVID-19 Status</label>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="input-field">
+                <h5>Text Field</h5>
+                <textarea id="body" name="body"></textarea>
+            </div>
+        </div>
+        -->
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
