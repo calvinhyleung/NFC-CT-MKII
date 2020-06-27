@@ -1,31 +1,38 @@
 <h3>Welcome {{name}}</h3>
+<div class="row">
+    <div class="chip">
+        <img src="{{image}}" alt="">
+        <a>{{displayName}}</a>
+    </div>
+</div>
+
 <p>Here are your recent logs</p>
 {{#if logs}}
-    <table class = "stiped">
-        <thread>
-            <tr>
-                <th>NFC Number</th>
-                <th>Scanned at</th>
-                <th>Left at</th>
-                <th></th>
-            </tr>
-        </thread>
-        <tbody>
-            {{#each logs}}
-            <tr>
-                <td><a href="/logs/{{_id}}"></a>{{chipId}}</td>
-                <td>{{formatDate scannedAt "MMM DD, YYYY - HH:mm:ss"}}</td>
-                <td>{{formatDate leftAt "MMM DD, YYYY - HH:mm:ss"}}</td>
-                <td>
-                    <a href="/logs/edit/{{_id}}" class="btn btn-float">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+<table class="stiped">
+    <thread>
+        <tr>
+            <th>NFC #</th>
+            <th>Scanned at</th>
+            <th>Left at</th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+        {{#each logs}}
+        <tr>
+            <td><a href="/logs/{{_id}}"></a>{{chipId}}</td>
+            <td>{{formatDate scannedAt "MMM DD, YYYY - HH:mm:ss"}}</td>
+            <td>{{formatDate leftAt "MMM DD, YYYY - HH:mm:ss"}}</td>
+            <td>
+                <a href="/logs/edit/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
 {{else}}
-    <p>There are no logs</p>
+<p>There are no logs</p>
 
 {{/if}}

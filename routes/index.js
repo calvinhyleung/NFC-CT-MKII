@@ -19,6 +19,8 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
         const logs = await Logs.find({user: req.user.id}).lean().sort({scannedAt: 'desc'});
         res.render('dashboard', {
         name: req.user.firstName,
+        image: req.user.image,
+        displayName: req.user.displayName,
         logs
         });
     } catch (error) {
